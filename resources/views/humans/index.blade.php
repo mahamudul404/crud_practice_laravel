@@ -34,6 +34,9 @@
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
           </td>
+          <td>
+            <a href=" {{ route('humans.show', $human) }} " class="btn btn-dark">Show</a>
+          </td>
         </tr>
 
 

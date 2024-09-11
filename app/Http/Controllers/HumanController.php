@@ -61,7 +61,7 @@ class HumanController extends Controller
      */
     public function show(Human $human)
     {
-        //
+        return view('humans.show', compact('human'));
     }
 
     /**
@@ -76,16 +76,16 @@ class HumanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id, Human $human)
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'email' => 'required|email|unique:users,email'. $id,
             'age' => 'required|integer',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $human = Human::find($id);
+        // $human = Human::find($id);
         $human->name = $request->name;
         $human->email = $request->email;
         $human->age = $request->age;
@@ -110,3 +110,5 @@ class HumanController extends Controller
         return redirect()->route('humans.index')->with('success', 'Delete successfull');
     }
 }
+
+
