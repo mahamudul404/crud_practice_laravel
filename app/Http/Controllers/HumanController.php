@@ -14,7 +14,9 @@ class HumanController extends Controller
      */
     public function index()
     {
-        $humans = Human::all();
+
+        $humans = Human::paginate(5);
+        // $humans = Human::all();
         return view('humans.index', compact('humans'));
     }
 
@@ -65,9 +67,9 @@ class HumanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Human $human)
     {
-        $human = Human::find($id);
+    
         return view('humans.edit', compact('human'));
     }
 
